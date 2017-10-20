@@ -15,3 +15,8 @@ Gitlab sees the app with the hostname alias 'app'.
 # App API
 
 The app exposes a single REST resource ```/gitlab``` that expects a ```POST``` request. This resource simply outputs to the console the request body, i.e. the webhook contents.
+
+# Running the applications
+
+1. Create the folders ```gitlab/config```, ```gitlab/data``` and ```gitlab/logs``` on the root of this repository
+1. ```docker-compose up```
