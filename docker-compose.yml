@@ -1,0 +1,28 @@
+version: '3'
+services:
+  gitlab:
+    image: gitlab/gitlab-ce:latest
+    deploy:
+      replicas: 1
+    ports:
+    - "443:443"
+    - "80:80"
+    - "22:22"
+    networks: 
+      gitlab_network:
+        aliases:
+          - gitlab
+    volumes:
+    - gitlab/config:/etc/gitlab
+    - gitlab/logs:/var/log/gitlab
+    - gitlab/data:/var/opt/gitlab
+    links:
+    - app
+  app:
+    build: .
+    networks: 
+      gitlab_network:
+        aliases:
+          - app
+networks: 
+  gitlab_network:
